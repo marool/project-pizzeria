@@ -85,6 +85,47 @@
 
     initAccordion(){
       const thisProduct = this;
+
+      /* find the clickable trigger (the element that should react to clicking) */
+
+      const trigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+
+      /* START: click event listener to trigger */
+
+      trigger.addEventListener('click', function(){
+        console.log('clicked');
+
+        /* prevent default action for event */
+
+        event.preventDefault();
+
+        /* toggle active class on element of thisProduct */
+
+        thisProduct.element.classList.toggle('active');
+
+        /* find all active products */
+
+        const activeProducts = document.querySelectorAll(select.all.menuProductsActive);
+
+        /* START LOOP: for each active product */
+
+        for (let activeProduct of activeProducts) {
+          console.log(activeProduct);
+
+          /* START: if the active product isn't the element of thisProduct */
+
+          if (activeProduct != thisProduct.element) {
+
+            /* remove class active for the active product */
+
+            activeProduct.classList.remove('active');
+
+          /* END: if the active product isn't the element of thisProduct */
+          }
+        /* END LOOP: for each active product */
+        }
+      /* END: click event listener to trigger */
+      });
     }
   }
 
