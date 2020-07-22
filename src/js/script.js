@@ -92,7 +92,7 @@
 
       /* START: click event listener to trigger */
 
-      trigger.addEventListener('click', function(){
+      trigger.addEventListener('click', function(event){
         console.log('clicked');
 
         /* prevent default action for event */
