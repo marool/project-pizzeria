@@ -238,6 +238,7 @@
       }
       /* set the contents of thisProduct.priceElem to be the value of variable price */
       //console.log(price);
+      price *= thisProduct.amountWidget.value;
       thisProduct.priceElem.innerHTML = price;
 
     }
@@ -247,6 +248,9 @@
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function(){
+        thisProduct.processOrder();
+      });
     }
   }
 
@@ -277,7 +281,8 @@
       /* TODO: Add validation */
 
       thisWidget.value = newValue;
-      thisWidget.input.vaue = thisWidget.value;
+      thisWidget.announce();
+      thisWidget.input.value = thisWidget.value;
     }
 
     initActions(){
@@ -298,6 +303,12 @@
       });
     }
 
+    announce(){
+      const thisWidget = this;
+
+      const event = new Event ('updated');
+      thisWidget.element.dispatchEvent(event);
+    }
   }
 
   const app = {
