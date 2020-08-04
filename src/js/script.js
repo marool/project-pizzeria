@@ -477,7 +477,7 @@
       const url = settings.db.url + '/' + settings.db.order;
 
       const payload = {
-        phone: thisCart.dom.address,
+        phone: thisCart.dom.phone,
         address: thisCart.dom.address,
         totalPrice: thisCart.totalPrice,
         subtotalPrice: thisCart.subtotalPrice,
@@ -571,15 +571,13 @@
 
     getData () {
       const thisCartProduct = this;
-      const productData = {
+      return {
         id: thisCartProduct.id,
         price: thisCartProduct.price,
         priceSingle: thisCartProduct.priceSingle,
         amount: thisCartProduct.amount,
         params: thisCartProduct.params,
       };
-      console.log(productData);
-      return productData;
     }
   }
 
