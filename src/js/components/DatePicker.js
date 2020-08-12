@@ -49,5 +49,9 @@ class DatePicker extends BaseWidget {
     return true;
   }
 
+  renderValue (){
+
+  }
+
 }
 export default DatePicker;
