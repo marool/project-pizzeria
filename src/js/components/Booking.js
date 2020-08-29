@@ -190,11 +190,14 @@ class Booking {
     for (let table of thisBooking.dom.tables) {
       table.addEventListener('click', function () {
         if (!table.classList.contains(classNames.booking.tableBooked)) {
-          const selectedTables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tableSelected);
-          for (let selectedTable of selectedTables) {
-            selectedTable.classList.remove(classNames.booking.tableSelected);
-          }
+
           table.classList.toggle(classNames.booking.tableSelected);
+          const selectedTables = thisBooking.dom.wrapper.querySelectorAll(select.all.tablesSelected);
+          for (let selectedTable of selectedTables) {
+            if(selectedTable != this) {
+              selectedTable.classList.remove(classNames.booking.tableSelected);
+            }
+          }
         }
       });
     }

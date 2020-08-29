@@ -157,6 +157,11 @@
 
     }
 
+    &.selected {
+      background: orange;
+    }
+
+
     &.booked {
       cursor: not-allowed;
       color: lighten($color-dark, 40%);
