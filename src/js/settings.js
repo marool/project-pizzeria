@@ -40,6 +40,7 @@ export const select = {
       input: 'input[type="range"]',
       output: '.output',
     },
+    timePicker: '.time-picker',
   },
   // CODE ADDED START
   cart: {
@@ -64,6 +65,13 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    starter: 'input[name="starter"]',
+    form: '.booking-form',
+  },
+  form: {
+    phone: '[name="phone"]',
+    address: '[name="address"]',
+    formSubmit: 'button[type="submit"]',
   },
   nav: {
     links: '.main-nav a',
