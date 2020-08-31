@@ -169,6 +169,9 @@ class Booking {
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.timePicker = thisBooking.dom.wrapper.querySelector(select.widgets.timePicker);
+    thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.cart.address);
+    thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.cart.phone);
+
 
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
     thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starter);
@@ -194,9 +197,11 @@ class Booking {
       duration: thisBooking.hoursAmount.value,
       ppl: thisBooking.peopleAmount.value,
       starters: [],
+      address: thisBooking.dom.address.value,
+      phone: thisBooking.dom.phone.value,
     };
     for (let starter of thisBooking.dom.starters) {
-      if (starter.checked){
+      if (starter.checked == true){
         payload.starters.push(starter.value);
       }
       const options = {
@@ -211,6 +216,7 @@ class Booking {
         .then(parsedResponse => {
           console.log('parsedResponse: ', parsedResponse);
           thisBooking.makeBooked(parsedResponse.date, parsedResponse.hour, parsedResponse.duration, parsedResponse.table);
+          thisBooking.removeSelected();
           thisBooking.updateDOM();
         });
     }
