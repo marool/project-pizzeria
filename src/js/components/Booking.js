@@ -204,25 +204,23 @@ class Booking {
       if (starter.checked == true){
         payload.starters.push(starter.value);
       }
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      };
-      fetch(url, options)
-        .then(response => response.json())
-        .then(parsedResponse => {
-          console.log('parsedResponse: ', parsedResponse);
-          thisBooking.makeBooked(parsedResponse.date, parsedResponse.hour, parsedResponse.duration, parsedResponse.table);
-          thisBooking.removeSelected();
-          thisBooking.updateDOM();
-        });
     }
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+    fetch(url, options)
+      .then(response => response.json())
+      .then(parsedResponse => {
+        console.log('parsedResponse: ', parsedResponse);
+        thisBooking.makeBooked(parsedResponse.date, parsedResponse.hour, parsedResponse.duration, parsedResponse.table);
+        thisBooking.removeSelected();
+        thisBooking.updateDOM();
+      });
   }
-
-
 
   initWidgets () {
     const thisBooking = this;
