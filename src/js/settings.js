@@ -67,6 +67,7 @@ export const select = {
     tables: '.floor-plan .table',
     starter: 'input[name="starter"]',
     form: '.booking-form',
+    tableSelected: '.selected',
   },
   form: {
     phone: '[name="phone"]',
